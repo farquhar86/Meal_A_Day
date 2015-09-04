@@ -30,6 +30,33 @@ app.get("/login", function (req, res) {
 });
 
 
+// where the user submits the sign-up form
+app.post(["/users", "/receiverSignup"], function signup(req, res) {
+  // grab the user from the params
+  var receiver = req.body.receiver;
+  // pull out their email & password
+  var userName = receiver.userName
+  var passwordDigest = receiver.passwordDigest;
+  var firstName = receiver.firstName;
+  var lastName = receiver.lastName;
+  var email = receiver.email;
+  var currentCity = receiver.currentCity;
+  var sex = receiver.sex;
+  var birthdate = receiver.birthdate;
+  var story = receiver.story;
+  
+  // create the new user
+  db.Receiver.createSecure(userName, passwordDigest, firstName, lastName, email, currentCity, sex, birthdate, story  function (err, user) {
+    // res.send(email + " is registered!\n");
+    req.login(receiver)
+    res.redirect('/receiveAMealProfile')
+  });
+
+});
+
+app.get("/receiveAMealProfile", function (req, res) {
+  res.sendFile(path.join(views, "receiveAMealProfile.html"));
+});
 
 
 

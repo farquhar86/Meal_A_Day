@@ -1,1 +1,79 @@
-<h1> Hello World </h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/vendor/underscore/underscore-min.js"></script>
+  <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+
+        <script src="/static/javascripts/app.js"></script>
+</head>
+<body>
+	<div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+  <h1>Sign Up to Receive Meals</h1>
+  <form method="post" action="/receiverSignup">
+    <div>
+      <input type="text" name="receiver[userName]" placeholder="Username">
+    </div>
+  	<div>
+      <input type="password" name="receiver[passwordDigest]" placeholder="password">
+    </div>
+    <div>
+      <input type="text" name="receiver[firstName]" placeholder="First Name">
+    </div>
+    <div>
+      <input type="text" name="receiver[lastName]" placeholder="Last Name">
+    </div>
+    <div>
+      <input type="email" name="receiver[email]" placeholder="Email">
+    </div>
+    <div>
+      <input type="text" name="receiver[currentCity]" placeholder="Current City">
+    </div>
+    <div>
+      <input type="text" name="receiver[sex]" placeholder="Male or Female">
+    </div>
+    <div>
+      <input type="date" name="receiver[birthdate]" placeholder="Birthdate">
+    </div>
+    <div>
+      <textarea type="text" name="receiver[story]" rows="7">
+      	Your Story:
+      	Where you grew up? 
+		Your first job?
+		Have any kids?
+		Where have you lived?
+		What events brought you to the stage of life you are currely at?
+		What your future goals are?
+	</textarea>
+    </div>
+    <button>Sign Up to Give a Meal</button>
+  </form>
+
+  <h1>Sign Up to Give a Meal</h1>
+  <form method="post" action="/login">
+    <div>
+      <input type="text" name="giver[firstName]" placeholder="First Name">
+    </div>
+    <div>
+      <input type="text" name="giver[lastName]" placeholder="Last Name">
+    </div>
+    <div>
+      <input type="email" name="giver[email]" placeholder="Email">
+    </div>
+    <div>
+      <input type="password" name="giver[passwordDigest]" placeholder="password">
+    </div>
+    <button>Sign Up to Give a Meal</button>
+  </form>
+ </div>
+</div>
+</div>
+</body>
+</html>
