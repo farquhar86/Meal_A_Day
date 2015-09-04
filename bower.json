@@ -1,0 +1,21 @@
+{
+  "name": "Meal_A_Day",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/farquhar86/Meal_A_Day",
+  "authors": [
+    "bradfarquhar <farquharbradley@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "underscore": "~1.8.3"
+  }
+}

@@ -2,7 +2,6 @@
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.13.3",
-    "bootstrap": "^3.3.5",
     "bower": "^1.5.2",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
