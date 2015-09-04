@@ -25,6 +25,10 @@ app.get("/signup", function (req, res) {
   res.sendFile(path.join(views, "signup.html"));
 });
 
+app.get("/login", function (req, res) {
+  res.sendFile(path.join(views, "login.html"));
+});
+
 
 
 
