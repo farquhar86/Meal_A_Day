@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/??????Think I need to put somehting in here like the name in my package.jason");
+mongoose.connect("mongodb://localhost/meal_a_day");
 
 module.exports.Receiver = require("./receiver");
 

@@ -10,54 +10,47 @@
   <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
 
-        <script src="/static/javascripts/app.js"></script>
+        <script src="/static/javascript/app.js"></script>
 </head>
 <body>
 	<div class="container">
             <div class="row">
                 <div class="col-sm-12">
   <h1>Sign Up to Receive Meals</h1>
-  <form method="post" action="/receiverSignup">
+  <form method="post" action="/receiver_signup">
     <div>
-      <input type="text" name="receiver[userName]" placeholder="Username">
+      <input type="text" name="receiver[userName]" placeholder="Username" value="farquhar86">
     </div>
   	<div>
-      <input type="password" name="receiver[passwordDigest]" placeholder="password">
+      <input type="password" name="receiver[password]" placeholder="password" value="hello">
     </div>
     <div>
-      <input type="text" name="receiver[firstName]" placeholder="First Name">
+      <input type="text" name="receiver[firstName]" placeholder="First Name" value="bradley">
     </div>
     <div>
-      <input type="text" name="receiver[lastName]" placeholder="Last Name">
+      <input type="text" name="receiver[lastName]" placeholder="Last Name" value="farquhar">
     </div>
     <div>
-      <input type="email" name="receiver[email]" placeholder="Email">
+      <input type="email" name="receiver[email]" placeholder="Email" value="farquharbradley@gmail.com">
     </div>
     <div>
-      <input type="text" name="receiver[currentCity]" placeholder="Current City">
+      <input type="text" name="receiver[currentCity]" placeholder="Current City" value="sf">
     </div>
     <div>
-      <input type="text" name="receiver[sex]" placeholder="Male or Female">
+      <input type="text" name="receiver[sex]" placeholder="Male or Female" value="male">
     </div>
     <div>
-      <input type="date" name="receiver[birthdate]" placeholder="Birthdate">
+      <input type="date" name="receiver[birthDate]" placeholder="Birthdate">
     </div>
     <div>
-      <textarea type="text" name="receiver[story]" rows="7">
-      	Your Story:
-      	Where you grew up? 
-		Your first job?
-		Have any kids?
-		Where have you lived?
-		What events brought you to the stage of life you are currely at?
-		What your future goals are?
-	</textarea>
+      <input type="text" name="receiver[story]" rows="7" value="I love life">
+  
     </div>
     <button>Sign Up to Give a Meal</button>
   </form>
 
   <h1>Sign Up to Give a Meal</h1>
-  <form method="post" action="/login">
+  <form method="post" action="/donor_signup">
     <div>
       <input type="text" name="giver[firstName]" placeholder="First Name">
     </div>
@@ -68,7 +61,7 @@
       <input type="email" name="giver[email]" placeholder="Email">
     </div>
     <div>
-      <input type="password" name="giver[passwordDigest]" placeholder="password">
+      <input type="password" name="giver[password]" placeholder="password">
     </div>
     <button>Sign Up to Give a Meal</button>
   </form>

@@ -31,33 +31,64 @@ app.get("/login", function (req, res) {
 
 
 // where the user submits the sign-up form
-app.post(["/users", "/receiverSignup"], function signup(req, res) {
+app.post(["/users", "/receiver_signup"], function signup(req, res) {
   // grab the user from the params
   var receiver = req.body.receiver;
+  console.log(receiver)
   // pull out their email & password
   var userName = receiver.userName
-  var passwordDigest = receiver.passwordDigest;
+  var password = receiver.password;
   var firstName = receiver.firstName;
   var lastName = receiver.lastName;
   var email = receiver.email;
   var currentCity = receiver.currentCity;
   var sex = receiver.sex;
-  var birthdate = receiver.birthdate;
+  var birthDate = receiver.birthDate;
   var story = receiver.story;
   
   // create the new user
-  db.Receiver.createSecure(userName, passwordDigest, firstName, lastName, email, currentCity, sex, birthdate, story  function (err, user) {
+  db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, user) {
+    if(err) {return console.log(err);}
     // res.send(email + " is registered!\n");
-    req.login(receiver)
-    res.redirect('/receiveAMealProfile')
+    // req.login(receiver)
+    res.redirect('/receiver_profile')
   });
 
 });
 
-app.get("/receiveAMealProfile", function (req, res) {
-  res.sendFile(path.join(views, "receiveAMealProfile.html"));
+app.get("/receiver_profile", function (req, res) {
+  res.sendFile(path.join(views, "receiver_profile.html"));
 });
 
+// where the user submits the sign-up form
+app.post(["/users", "/donor_signup"], function signup(req, res) {
+  // grab the user from the params
+  var receiver = req.body.receiver;
+  console.log(receiver)
+  // pull out their email & password
+  var userName = receiver.userName
+  var password = receiver.password;
+  var firstName = receiver.firstName;
+  var lastName = receiver.lastName;
+  var email = receiver.email;
+  var currentCity = receiver.currentCity;
+  var sex = receiver.sex;
+  var birthDate = receiver.birthDate;
+  var story = receiver.story;
+  
+  // create the new user
+  db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, user) {
+    if(err) {return console.log(err);}
+    // res.send(email + " is registered!\n");
+    // req.login(receiver)
+    res.redirect('/donor_profile')
+  });
+
+});
+
+app.get("/donor_profile", function (req, res) {
+  res.sendFile(path.join(views, "donor_profile.html"));
+});
 
 
 
