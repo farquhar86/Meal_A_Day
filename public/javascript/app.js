@@ -1,6 +1,6 @@
 $(document).ready(function() {
 $('#pinBoot').pinterest_grid({
-no_columns: 4,
+no_columns: 2,
 padding_x: 10,
 padding_y: 10,
 margin_bottom: 50,
@@ -8,19 +8,6 @@ single_column_breakpoint: 700
 });
 });
 
-/*
-Ref:
-Thanks to:
-http://www.jqueryscript.net/layout/Simple-jQuery-Plugin-To-Create-Pinterest-Style-Grid-Layout-Pinterest-Grid.html
-*/
-
-
-
-    Pinterest Grid Plugin
-    Copyright 2014 Mediademons
-    @author smm 16/04/2014
-
-    usage:
 
      $(document).ready(function() {
 

@@ -52,16 +52,19 @@
   <h1>Sign Up to Give a Meal</h1>
   <form method="post" action="/donor_signup">
     <div>
-      <input type="text" name="giver[firstName]" placeholder="First Name">
+      <input type="email" name="donor[email]" placeholder="Email">
     </div>
     <div>
-      <input type="text" name="giver[lastName]" placeholder="Last Name">
+      <input type="password" name="donor[password]" placeholder="password">
     </div>
     <div>
-      <input type="email" name="giver[email]" placeholder="Email">
+      <input type="text" name="donor[firstName]" placeholder="First Name">
     </div>
     <div>
-      <input type="password" name="giver[password]" placeholder="password">
+      <input type="text" name="donor[lastName]" placeholder="Last Name">
+    </div>
+    <div>
+      <input type="text" name="donor[city]" placeholder="city">
     </div>
     <button>Sign Up to Give a Meal</button>
   </form>

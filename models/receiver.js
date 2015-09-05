@@ -3,13 +3,14 @@ var mongoose = require('mongoose'),
 Schema = mongoose.Schema,
 bcrypt = require('bcrypt');
 
-// the giver schema
-var giverSchema = new Schema({
+// the donor schema
+var donorSchema = new Schema({
 
- email: {type: String, unique: true}, 
+ email: {type: String}, 
  password: {type: String},
  firstName: {type: String},
  lastName: {type: String},
+ city: {type: String},
  createdAt: {type: Date, default: Date.now()}
 
 });
@@ -27,7 +28,7 @@ var receiverSchema = new Schema({
  sex: {type: String},
  birthDate: {type: Date},
  story: {type: String},
- donors: [giverSchema], 
+ donors: [donorSchema], 
  createdAt: {type: Date, default: Date.now()}
 
 });
@@ -88,7 +89,10 @@ receiverSchema.methods.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-// create a new user with secure (hashed) password (for sign up)
+
+
+
+// create a new donor with secure (hashed) password (for sign up)
 donorSchema.statics.createSecure = function (email, password, firstName, lastName, city, cb) {
 
   // `_this` now references our schema
@@ -113,9 +117,9 @@ donorSchema.statics.createSecure = function (email, password, firstName, lastNam
 };
 
 // authenticate user (for login)
-donorSchema.statics.authenticate = function (userName, password, cb) {
+donorSchema.statics.authenticate = function (email, password, cb) {
   // find user by email entered at log in
-  this.findOne({userName: userName}, function (err, user) {
+  this.findOne({email: email}, function (err, user) {
     // throw error if can't find user
     if (user === null) {
       cb("Can\'t find user with that email", null);

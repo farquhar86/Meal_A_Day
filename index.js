@@ -60,24 +60,25 @@ app.get("/receiver_profile", function (req, res) {
   res.sendFile(path.join(views, "receiver_profile.html"));
 });
 
+
+
 // where the user submits the sign-up form
 app.post(["/users", "/donor_signup"], function signup(req, res) {
   // grab the user from the params
-  var receiver = req.body.receiver;
-  console.log(receiver)
+  var donor = req.body.donor;
+  console.log(donor)
   // pull out their email & password
-  var userName = receiver.userName
-  var password = receiver.password;
-  var firstName = receiver.firstName;
-  var lastName = receiver.lastName;
-  var email = receiver.email;
-  var currentCity = receiver.currentCity;
-  var sex = receiver.sex;
-  var birthDate = receiver.birthDate;
-  var story = receiver.story;
+  var email = donor.email;
+  var password = donor.password;
+  var firstName = donor.firstName;
+  var lastName = donor.lastName;
+  var city = donor.city;
+  
+
+  
   
   // create the new user
-  db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, user) {
+  db.Donor.createSecure(email, password, firstName, lastName, city, function (err, user) {
     if(err) {return console.log(err);}
     // res.send(email + " is registered!\n");
     // req.login(receiver)
