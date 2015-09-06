@@ -16,16 +16,21 @@ getReceivers()
 function getReceivers() {
   $.get("/receivers", function(res){
     var receivers = res.reverse();
+    console.log(receivers)
     // grab foods template
     renderReceivers(receivers)
   });
 }
 
 function renderReceivers(receivers) {
-  template = _.template($("#receiver-template").html());
+    console.log(receivers)
+  console.log($("#receiver-template"))
+  mytemplate = _.template($("#receiver-template").html());
+
+  console.log(mytemplate)
   // input foods into template and append to parent
   eachReceiver = receivers.map(function(receiver) {
-    return template(receiver);
+    return mytemplate(receiver);
   });
   // clear content (for repeated use)
   // $("#name").html("");
