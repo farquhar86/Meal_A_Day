@@ -46,7 +46,7 @@ app.post(["/users", "/receiver_signup"], function signup(req, res) {
   var birthDate = receiver.birthDate;
   var story = receiver.story;
   
-  // create the new user
+  // create the new Receiver
   db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, user) {
     if(err) {return console.log(err);}
     // res.send(email + " is registered!\n");
@@ -77,8 +77,8 @@ app.post(["/users", "/donor_signup"], function signup(req, res) {
 
   
   
-  // create the new user
-  db.Donor.createSecure(email, password, firstName, lastName, city, function (err, user) {
+  // create the new Donor
+  db.Donor.createSecure(email, password, firstName, lastName, city,  function (err, user) {
     if(err) {return console.log(err);}
     // res.send(email + " is registered!\n");
     // req.login(receiver)

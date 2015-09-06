@@ -8,68 +8,258 @@
   <script src="/vendor/jquery/dist/jquery.min.js"></script>
   <script src="/vendor/underscore/underscore-min.js"></script>
   <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
-
-        <script src="/static/javascript/app.js"></script>
+  <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/static/javascript/app.js"></script>
 </head>
 <body>
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav">Give A Meal</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li>
+                        <form method="GET" action="/signup">
+                            <button class="btn btn-default">Signup</button>
+                        </form>
+                    </li> -->
+                    <li>
+                        <form method="GET" action="/login">
+                            <button class="btn btn-default">Login</button>
+                        </form>    
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+<br>
+<br>
+<br>
+<br>
+
 	<div class="container">
             <div class="row">
                 <div class="col-sm-12">
-  <h1>Sign Up to Receive Meals</h1>
-  <form method="post" action="/receiver_signup">
-    <div>
-      <input type="text" name="receiver[userName]" placeholder="Username" value="farquhar86">
-    </div>
-  	<div>
-      <input type="password" name="receiver[password]" placeholder="password" value="hello">
-    </div>
-    <div>
-      <input type="text" name="receiver[firstName]" placeholder="First Name" value="bradley">
-    </div>
-    <div>
-      <input type="text" name="receiver[lastName]" placeholder="Last Name" value="farquhar">
-    </div>
-    <div>
-      <input type="email" name="receiver[email]" placeholder="Email" value="farquharbradley@gmail.com">
-    </div>
-    <div>
-      <input type="text" name="receiver[currentCity]" placeholder="Current City" value="sf">
-    </div>
-    <div>
-      <input type="text" name="receiver[sex]" placeholder="Male or Female" value="male">
-    </div>
-    <div>
-      <input type="date" name="receiver[birthDate]" placeholder="Birthdate">
-    </div>
-    <div>
-      <input type="text" name="receiver[story]" rows="7" value="I love life">
-  
-    </div>
-    <button>Sign Up to Give a Meal</button>
-  </form>
+                  <div>
 
-  <h1>Sign Up to Give a Meal</h1>
-  <form method="post" action="/donor_signup">
-    <div>
-      <input type="email" name="donor[email]" placeholder="Email">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Receive a Meal</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Give a Meal</a></li>
+    
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+
+      <div class="col-md-6">
+        <h3 class="dark-grey">Sign Up to Receive a Meal</h3>
+        <form method="post" action="/receiver_signup">
+        <div class="form-group col-lg-6">
+          <label>Username</label>
+          <input type="text" name="receiver[userName]" placeholder="Username" class="form-control" value="farquhar86">
+        </div>
+        
+        <div class="form-group col-lg-6">
+          <label>Password</label>
+          <input type="password" name="receiver[password]" placeholder="password" class="form-control" value="hello">
+        </div>
+        
+        <div class="form-group col-lg-6">
+          <label>First Name</label>
+          <input type="text" name="receiver[firstName]" placeholder="First Name" class="form-control" value="bradley">
+        </div>
+                
+        <div class="form-group col-lg-6">
+          <label>Last Name</label>
+          <input type="text" name="receiver[lastName]" placeholder="Last Name" class="form-control" value="farquhar">
+        </div>
+        
+        <div class="form-group col-lg-6">
+          <label>Email</label>
+          <input type="email" name="receiver[email]" placeholder="Email" class="form-control" value="farquharbradley@gmail.com">
+        </div>    
+        <div class="form-group col-lg-6">
+          <label>Current City</label>
+          <input type="text" name="receiver[currentCity]" placeholder="Current City" class="form-control" value="sf">
+        </div>   
+        <div class="form-group col-lg-6">
+          <label>Sex</label>
+          <input type="text" name="receiver[sex]" placeholder="Male or Female" class="form-control" value="male">
+        </div>   
+        <div class="form-group col-lg-6">
+          <label>Birth Date</label>
+          <input type="date" name="receiver[birthDate]" placeholder="Birthdate" class="form-control">
+        </div>     
+        <div class="form-group col-lg-12">
+          <label>Your Story</label>
+          <input type="text" name="receiver[story]" rows="7" value="I love life" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <button class="btn btn-success">Sign Up to Receive a Meal</button>
+        </div>  
+        </form>      
+      </div>
     </div>
-    <div>
-      <input type="password" name="donor[password]" placeholder="password">
+    <div role="tabpanel" class="tab-pane" id="profile">
+
+
+
+      <div class="col-md-6">
+        <h3 class="dark-grey">Sign Up to Give a Meal</h3>
+        <form method="post" action="/donor_signup">
+        <div class="form-group col-lg-12">
+          <label>Email</label>
+          <input type="email" name="donor[email]" placeholder="Email" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>Password</label>
+          <input type="password" name="donor[password]" placeholder="password" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>First Name</label>
+          <input type="text" name="donor[firstName]" placeholder="First Name" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>Last Name</label>
+          <input type="text" name="donor[lastName]" placeholder="Last Name" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>Current City</label>
+          <input type="text" name="donor[city]" placeholder="city" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <button class="btn btn-success">Sign Up to Give a Meal</button>
+        </div>  
+        </form>
+      </div>
+
+
+
+
+
     </div>
-    <div>
-      <input type="text" name="donor[firstName]" placeholder="First Name">
+    <div role="tabpanel" class="tab-pane" id="messages">hi again</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+
+</div>
+<!-- 
+                  <div class="container-fluid">
+    <section class="container">
+    <div class="container-page">        
+      <div class="col-md-6">
+        <h3 class="dark-grey">Receive a Meal</h3>
+        <form method="post" action="/receiver_signup">
+        <div class="form-group col-lg-6">
+          <label>Username</label>
+          <input type="text" name="receiver[userName]" placeholder="Username" class="form-control" value="farquhar86">
+        </div>
+        
+        <div class="form-group col-lg-6">
+          <label>Password</label>
+          <input type="password" name="receiver[password]" placeholder="password" class="form-control" value="hello">
+        </div>
+        
+        <div class="form-group col-lg-6">
+          <label>First Name</label>
+          <input type="text" name="receiver[firstName]" placeholder="First Name" class="form-control" value="bradley">
+        </div>
+                
+        <div class="form-group col-lg-6">
+          <label>Last Name</label>
+          <input type="text" name="receiver[lastName]" placeholder="Last Name" class="form-control" value="farquhar">
+        </div>
+        
+        <div class="form-group col-lg-6">
+          <label>Email</label>
+          <input type="email" name="receiver[email]" placeholder="Email" class="form-control" value="farquharbradley@gmail.com">
+        </div>    
+        <div class="form-group col-lg-6">
+          <label>Current City</label>
+          <input type="text" name="receiver[currentCity]" placeholder="Current City" class="form-control" value="sf">
+        </div>   
+        <div class="form-group col-lg-6">
+          <label>Sex</label>
+          <input type="text" name="receiver[sex]" placeholder="Male or Female" class="form-control" value="male">
+        </div>   
+        <div class="form-group col-lg-6">
+          <label>Birth Date</label>
+          <input type="date" name="receiver[birthDate]" placeholder="Birthdate" class="form-control">
+        </div>     
+        <div class="form-group col-lg-12">
+          <label>Your Story</label>
+          <input type="text" name="receiver[story]" rows="7" value="I love life" class="form-control">
+        </div> 
+        <button class="btn btn-success">Sign Up to Receive a Meal</button>
+        </form>      
+      </div>
+    
+      <div class="col-md-6">
+        <h3 class="dark-grey">Give a Meal</h3>
+        <form method="post" action="/donor_signup">
+        <div class="form-group col-lg-12">
+          <label>Email</label>
+          <input type="email" name="donor[email]" placeholder="Email" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>Password</label>
+          <input type="password" name="donor[password]" placeholder="password" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>First Name</label>
+          <input type="text" name="donor[firstName]" placeholder="First Name" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>Last Name</label>
+          <input type="text" name="donor[lastName]" placeholder="Last Name" class="form-control">
+        </div> 
+        <div class="form-group col-lg-12">
+          <label>Current City</label>
+          <input type="text" name="donor[city]" placeholder="city" class="form-control">
+        </div> 
+        <button class="btn btn-success">Sign Up to Give a Meal</button>
+        </form>
+      </div>
     </div>
-    <div>
-      <input type="text" name="donor[lastName]" placeholder="Last Name">
-    </div>
-    <div>
-      <input type="text" name="donor[city]" placeholder="city">
-    </div>
-    <button>Sign Up to Give a Meal</button>
-  </form>
+  </section>
+</div>
  </div>
 </div>
-</div>
+</div> -->
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

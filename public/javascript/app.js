@@ -158,4 +158,13 @@ single_column_breakpoint: 700
         });
     }
 
-})(jQuery, window, document);
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
+
+})
+
+
+
+
+(jQuery, window, document);
