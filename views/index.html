@@ -147,6 +147,14 @@
 
             <div class="row">
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <form id        =  "uploadForm"
+                         enctype   =  "multipart/form-data"
+                         action    =  "/api/photo"
+                         method    =  "post"
+                    >
+                    <input type="file" name="userPhoto" />
+                    <input type="submit" value="Upload Image" name="submit">
+                    </form>
                     <!-- <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>

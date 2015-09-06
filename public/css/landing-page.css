@@ -35,7 +35,8 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../images/main_photo.jpg) no-repeat center center;
+    background: url(../images/main_photo.jpg) no-repeat center top;
+    background-position: top;
     background-size: cover;
 }
 

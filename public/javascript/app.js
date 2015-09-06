@@ -6,7 +6,32 @@ padding_y: 10,
 margin_bottom: 50,
 single_column_breakpoint: 700
 });
+getReceivers()
 });
+
+
+
+
+
+function getReceivers() {
+  $.get("/receivers", function(res){
+    var receivers = res.reverse();
+    // grab foods template
+    renderReceivers(receivers)
+  });
+}
+
+function renderReceivers(receivers) {
+  template = _.template($("#receiver-template").html());
+  // input foods into template and append to parent
+  eachReceiver = receivers.map(function(receiver) {
+    return template(receiver);
+  });
+  // clear content (for repeated use)
+  // $("#name").html("");
+  // append foods to ul
+  $("#name").append(eachReceiver);
+}
 
 
      $(document).ready(function() {
@@ -14,10 +39,7 @@ single_column_breakpoint: 700
         $('#blog-landing').pinterest_grid({
             no_columns: 4
         });
-
     });
-
-
 
 ;(function ($, window, document, undefined) {
     var pluginName = 'pinterest_grid',
@@ -158,9 +180,9 @@ single_column_breakpoint: 700
         });
     }
 
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
+// $('#myModal').on('shown.bs.modal', function () {
+//   $('#myInput').focus()
+// })
 
 })
 

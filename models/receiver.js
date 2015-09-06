@@ -53,7 +53,7 @@ receiverSchema.statics.createSecure = function (userName, password, firstName, l
 		 sex: sex,
 		 birthDate: birthDate,
 		 story: story,
-		 donors: [giverSchema], 
+		 donors: [donorSchema], 
 		 createdAt: Date.now()
       };
       // create a new user in the db with hashed password and execute the callback when done
@@ -148,3 +148,7 @@ var Donor = mongoose.model("Giver", donorSchema);
 var Receiver = mongoose.model("Receiver", receiverSchema);
 
 module.exports = Receiver;
+module.exports = Donor;
+
+
+
