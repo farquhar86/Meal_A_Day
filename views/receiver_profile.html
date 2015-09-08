@@ -1,9 +1,133 @@
+<!DOCTYPE html>
 <html>
+
+<link href="/static/css/receiver_profile.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+ <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <link href="/static/css/landing-page.css" rel="stylesheet">
+    <script src="/static/javascript/templating.js"></script>
+    <script src="/vendor/underscore/underscore-min.js"></script>
+
 <body>
-	<h1>Hello world</h1>
-<form action="/upload" method="post" enctype="multipart/form-data">
-<input type="file" name ="file" accept="application/x-zip-compressed,image/*">
-    <input type="submit" value="Upload selected file to server">
-</form>    
-</body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav">Give A Meal</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                    <li>
+                        <form method="get" action="/logout">
+                            <button class="btn btn-default">Logout</button>
+                        </form>    
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+  
+    <div class="receiver-intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Receive A Meal</h1>
+                        <h3>People in your neighborhood can now view your profile to donate meals.</h3>
+                        <hr class="intro-divider">
+                        <h3> Please view your profile below</h3>
+                        <br>
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+     <div class="col-xs-12 divider text-center">
+               
+                    <h3>Meals Available</h3>
+                    <h2><strong>3</strong></h2>       
+                    <hr>             
+             
+
+     </div>
+
+<!-- <h3> Be sure to upload a photo</h3>
+  	<form action="/uploads/upload" method="post" enctype="multipart/form-data">
+		<input type="file" name ="file" accept="application/x-zip-compressed,image/*">
+    	<input type="submit" value="Upload selected file to server">
+	</form>  -->
+
+<div id="test"></div>
+ <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Bradley Farqhar <small>San Fran</small></h2>
+                    <h4> Meals Available: 3</h4> 
+                    <h4> Meals Received: 15</h4>
+                    <p class="lead">I've had a great life and still have a lot of living to do.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="static/images/homelessman1.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <!--  <div class="col-xs-12 divider text-center">
+               
+                    <h2><strong>245</strong></h2>                    
+                    <p><small>Meals Received</small></p>
+                 
+                    </div> -->
+
+   <script type="text/template" id="receiver-template">  
+   
+	<div class="content-section-b">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading"><%= receiver.firstName %> <%= receiver.lastName %> <small><%= receiver.currentCity %></small></h2>
+                    <p class="lead"><%= receiver.story %></p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="static/images/homelessman1.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div> 
+    <br>            
+    </script>
+</body>	
+
 </html>

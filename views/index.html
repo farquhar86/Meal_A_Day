@@ -8,23 +8,11 @@
 
     <!-- Custom CSS -->
     <link href="/static/css/landing-page.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> -->
-          <script src="/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="/vendor/underscore/underscore-min.js"></script>
-       <!--  // <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script> -->
-        <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
-
-        <script src="/static/javascript/app.js"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="/vendor/underscore/underscore-min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/static/javascript/app.js"></script>
 
 </head>
 
@@ -41,11 +29,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav">Give A Meal</a>
+                <form method="GET" action="/">
+                    <a class="navbar-brand topnav">Give A Meal</a>
+                </form>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#mission">Our Mission</a>
+                    </li>
+                    <li>
+                        <a href="#donate">Give a Meal</a>
+                    </li>
                     <li>
                         <form method="GET" action="/signup">
                             <button class="btn btn-default">Signup</button>
@@ -66,7 +62,7 @@
 
 
     <!-- Header -->
-    <a name="about"></a>
+    
     <div class="intro-header">
         <div class="container">
 
@@ -78,10 +74,14 @@
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Give a Meal</span></a>
+                                <form method="GET" action="/signup">
+                                    <button class="btn btn-default btn-lg"><span class="network-name">Give a Meal</span></button>
+                                </form>
                             </li>
                             <li>
-                                <a class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Receive a Meal</span></a>
+                                <form method="GET" action="/signup">
+                                    <button class="btn btn-default btn-lg"> <span class="network-name">Receive a Meal</span></button>
+                                </form>
                             </li>
                             
                         </ul>
@@ -94,10 +94,20 @@
 
     </div>
     <!-- /.intro-header -->
-
+    
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <!-- this is the donation Widget -->
+            <div id='razoo_donation_widget'><span><a href="https://www.razoo.com/">Raise money online</a> for <a href="https://www.razoo.com/story/A-Meal-A-Day">Give a Meal</a></span></div><script type='text/javascript'>var r_params = {"title":"Give a Meal","short_description":"","long_description":"","color":"#8a8d86","errors":false,"donation_options":{"10":"For A Meal"},"image":"false"};var r_protocol=(("https:"==document.location.protocol)?"https://":"http://");var r_path="https://www.razoo.com/javascripts/widget_loader.js";var r_identifier='A-Meal-A-Day';document.write(unescape("%3Cscript id='razoo_widget_loader_script' src='"+r_path+"' type='text/javascript'%3E%3C/script%3E"));</script>
+          </div>
+        </div><!-- /.modal-content -->
+      </div>
+    </div>
     <!-- Page Content -->
 
-	<a  name="services"></a>
+	<a  name="mission"></a>
     
     <div class="content-section-b">
 
@@ -147,21 +157,12 @@
 
             <div class="row">
                 <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <form id        =  "uploadForm"
-                         enctype   =  "multipart/form-data"
-                         action    =  "/api/photo"
-                         method    =  "post"
-                    >
-                    <input type="file" name="userPhoto" />
-                    <input type="submit" value="Upload Image" name="submit">
-                    </form>
-                    <!-- <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                    <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p> -->
+                    <h2 class="section-heading">Jamie Flynn <small>San Francisco</small></h2>
+                    <p class="lead">This is my story. I try to work hard everyday however when your sleeping on the street its hard to do anything. This is not the life I wanted and not the life I intend on keeping. My luck will change and life will work out. </p>
+                   
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="" alt="">
+                    <img class="img-responsive" src="static/images/homelessman1.jpg" alt="">
                 </div>
             </div>
 
@@ -177,13 +178,13 @@
 
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
-                    <!-- <hr class="section-heading-spacer">
+                    
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                    <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p> -->
+                    <h2 class="section-heading">Jamie Flynn <small>San Francisco</small></h2>
+                    <p class="lead">This is my story. I try to work hard everyday however when your sleeping on the street its hard to do anything. This is not the life I wanted and not the life I intend on keeping. My luck will change and life will work out. </p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="" alt="">
+                    <img class="img-responsive" src="static/images/homelessman1.jpg" alt="">
                 </div>
             </div>
 
@@ -193,30 +194,29 @@
     </div>
     <!-- /.content-section-a -->
 
-	<a  name="contact"></a>
+	<a  name="donate"></a>
     <div class="banner">
-
-        <div class="container">
-
+        <div class="container text-center">
             <div class="row">
-                <!-- <div class="col-lg-6">
-                    <h2>Connect to Start Bootstrap:</h2>
+                <div class="col-lg-6">
+                    <h2>If you want to see more stories and give to that person please sign up. If you do not want to sign up you can donate to Give a Meal and we will send that meal to someone in your area.</h2>
                 </div>
                 <div class="col-lg-6">
-                    <ul class="list-inline banner-social-buttons">
+                    <br>
+                    <br>
+                    <br>
+                    <ul class="list-inline intro-social-buttons">
                         <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                            <form method="GET" action="/signup">
+                                <button class="btn btn-default btn-lg"><span class="network-name">Signup</span></button>
+                            </form>
                         </li>
-                        <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                        </li>
+                        <li>  
+                            <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="network-name">Donate to Give a Meal</span></button>   
+                        </li> 
                     </ul>
-                </div> -->
+                </div>
             </div>
-
         </div>
         <!-- /.container -->
 
@@ -245,17 +245,11 @@
                             <a href="#contact">Contact</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; Meal a Day 2014. All Rights Reserved</p>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- jQuery -->
-   <!--  // <script src="js/jquery.js"></script> -->
-
-    <!-- Bootstrap Core JavaScript -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
 
 </body>
 

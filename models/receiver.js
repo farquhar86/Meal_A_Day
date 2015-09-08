@@ -25,7 +25,7 @@ var receiverSchema = new Schema({
  lastName: {type: String},
  email: {type: String},
  currentCity: {type: String},
- sex: {type: String},
+ sex: {type: String, required: true},
  birthDate: {type: Date},
  story: {type: String},
  donors: [donorSchema], 
@@ -33,7 +33,7 @@ var receiverSchema = new Schema({
 
 });
 
-// create a new user with secure (hashed) password (for sign up)
+// create a new receiver with secure (hashed) password (for sign up)
 receiverSchema.statics.createSecure = function (userName, password, firstName, lastName, email, currentCity, sex, birthDate, story, cb) {
 
   // `_this` now references our schema
@@ -45,16 +45,16 @@ receiverSchema.statics.createSecure = function (userName, password, firstName, l
       // build the user object
       var user = {
          userName: userName,
-		 password: hash,
-		 firstName: firstName,
-		 lastName: lastName,
-		 email: email,
-		 currentCity: currentCity,
-		 sex: sex,
-		 birthDate: birthDate,
-		 story: story,
-		 donors: [donorSchema], 
-		 createdAt: Date.now()
+    		 password: hash,
+    		 firstName: firstName,
+    		 lastName: lastName,
+    		 email: email,
+    		 currentCity: currentCity,
+    		 sex: sex,
+    		 birthDate: birthDate,
+    		 story: story,
+    		 donors: [donorSchema], 
+    		 createdAt: Date.now()
       };
       // create a new user in the db with hashed password and execute the callback when done
       _this.create(user, cb);
@@ -62,7 +62,7 @@ receiverSchema.statics.createSecure = function (userName, password, firstName, l
   });
 };
 
-// authenticate user (for login)
+// authenticate reciever (for login)
 receiverSchema.statics.authenticate = function (userName, password, cb) {
   // find user by email entered at log in
   this.findOne({userName: userName}, function (err, user) {
@@ -103,12 +103,12 @@ donorSchema.statics.createSecure = function (email, password, firstName, lastNam
     bcrypt.hash(password, salt, function (err, hash) {
       // build the user object
       var user = {
-		 email: email,         
-		 password: hash,
-		 firstName: firstName,
-		 lastName: lastName,
-		 city: city,
-		 createdAt: Date.now()
+    		 email: email,         
+    		 password: hash,
+    		 firstName: firstName,
+    		 lastName: lastName,
+    		 city: city,
+    		 createdAt: Date.now()
       };
       // create a new user in the db with hashed password and execute the callback when done
       _this.create(user, cb);
@@ -147,8 +147,8 @@ donorSchema.methods.checkPassword = function (password) {
 var Donor = mongoose.model("Giver", donorSchema);
 var Receiver = mongoose.model("Receiver", receiverSchema);
 
-module.exports = Receiver;
-module.exports = Donor;
+module.exports.receiver = Receiver;
+module.exports.donor = Donor;
 
 
 

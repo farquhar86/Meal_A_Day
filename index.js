@@ -32,7 +32,7 @@ app.use(
   })
 );
 
-// extending the `req` object to help manage sessions
+// extending the `req` object to help manage Receiver sessions
 app.use(function (req, res, next) {
   // login a user
   req.login = function (user) {
@@ -40,12 +40,21 @@ app.use(function (req, res, next) {
   };
   // find the current user
   req.currentUser = function (cb) {
-    db.Receiver.
+    if(req.body.sex){
+      db.Receiver.
+        findOne({ _id: req.session.userId },
+        function (err, user) {
+          req.user = user;
+          cb(null, user);
+        })
+    } else {
+      db.Donor.
       findOne({ _id: req.session.userId },
       function (err, user) {
         req.user = user;
         cb(null, user);
       })
+    }
   };
   // logout the current user
   req.logout = function () {
@@ -56,6 +65,32 @@ app.use(function (req, res, next) {
   next(); 
 });
 
+// extending the `req` object to help manage Donor sessions
+// app.use(function (req, res, next) {
+//   // login a user
+//   req.login = function (user) {
+//     req.session.userId = user._id;
+//   };
+//   // find the current user
+//   req.currentUser = function (cb) {
+//     db.Donor.
+//       findOne({ _id: req.session.userId },
+//       function (err, user) {
+//         req.user = user;
+//         cb(null, user);
+//       })
+//   };
+//   // logout the current user
+//   req.logout = function () {
+//     req.session.userId = null;
+//     req.user = null;
+//   }
+//   // call the next middleware in the stack
+//   next(); 
+// });
+
+// views path
+var views = path.join(process.cwd(), "views");
 
 
 app.get("/", function (req, res) {
@@ -91,20 +126,26 @@ app.post(["/users", "/receiver_signup"], function signup(req, res) {
   // create the new Receiver
   db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, user) {
     if(err) {return console.log(err);}
-    // res.send(email + " is registered!\n");
-    // req.login(receiver)
+    //res.send(email + " is registered!\n");
+    //req.login(receiver)
     res.redirect('/receiver_profile')
   });
 
 });
 
 app.get("/receiver_profile", function (req, res) {
-  res.sendFile(path.join(views, "receiver_profile.html"));
+  req.currentUser(function (err, user) {
+    console.log(user);
+    // if(!user){
+    //   // res.send(user)
+    //   res.redirect('/')
+    // }
+    res.sendFile(path.join(views, "receiver_profile.html"));
+  });
 });
 
 
-
-// where the user submits the sign-up form
+// where the donor submits the sign-up form
 app.post(["/users", "/donor_signup"], function signup(req, res) {
   // grab the user from the params
   var donor = req.body.donor;
@@ -115,39 +156,66 @@ app.post(["/users", "/donor_signup"], function signup(req, res) {
   var firstName = donor.firstName;
   var lastName = donor.lastName;
   var city = donor.city;
-  
 
-  
-  
   // create the new Donor
   db.Donor.createSecure(email, password, firstName, lastName, city,  function (err, user) {
     if(err) {return console.log(err);}
-    // res.send(email + " is registered!\n");
-    // req.login(receiver)
+    //res.send(email + " is registered!\n");
+    req.login(donor)
     res.redirect('/donor_profile')
   });
 
 });
 
 app.get("/donor_profile", function (req, res) {
+   req.currentUser(function (err, user) {
+    
+    // if(!user){
+    //   // res.send(user)
+    //   res.redirect('/')
+    // }
   res.sendFile(path.join(views, "donor_profile.html"));
+  });
 });
 
 
-// where the user submits the login form
+// where the receiver submits the login form
 app.post(["/sessions", "/receiver_login"], function login(req, res) {
+  console.log("RECEIVE LOGIN ATTEMPT")
   var user = req.body.receiver;
   var userName = user.userName;
   var password = user.password;
   db.Receiver.authenticate(userName, password, function (err, user) {
+    if (err) {
+      console.log(err)
+      res.redirect("/login");
+    }
     // login the user
-    // req.login(receiver);
+    req.login(user);
     // redirect to user profile
     res.redirect("/receiver_profile"); 
   });
 });
 
+// where the donor submits the login form
+app.post(["/sessions", "/donor_login"], function login(req, res) {
+    console.log("DONOR LOGIN ATTEMPT")
+  var user = req.body.donor;
+  var email = user.email;
+  var password = user.password;
+  db.Donor.authenticate(email, password, function (err, user) {
+    if (err) {
+      console.log(err)
+      res.redirect("/login");
+    }
+    // login the user
+    req.login(user);
+    // redirect to user profile
+    res.redirect("/donor_profile"); 
+  });
+});
 
+// this is getting all the receivers out of the database
 app.get("/receivers", function(req, res){
 
     db.Receiver.find({}, function(err, receiver_list){
@@ -158,6 +226,11 @@ app.get("/receivers", function(req, res){
         res.send(receiver_list);
     })
 
+})
+
+app.get(["/logout", "/sessions"], function (req, res){
+  req.logout()
+  res.sendFile(path.join(views, "/"));
 })
 
 
@@ -221,3 +294,4 @@ app.post('/upload',require(__dirname+'/upload.js').upload);
 var listener = app.listen(3000, function () {
   console.log("Listening on port " + listener.address().port);
 });
+

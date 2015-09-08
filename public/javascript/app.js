@@ -1,42 +1,20 @@
 $(document).ready(function() {
 $('#pinBoot').pinterest_grid({
-no_columns: 2,
+no_columns: 3,
 padding_x: 10,
 padding_y: 10,
 margin_bottom: 50,
 single_column_breakpoint: 700
 });
-getReceivers()
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+})
 });
 
 
 
 
 
-function getReceivers() {
-  $.get("/receivers", function(res){
-    var receivers = res.reverse();
-    console.log(receivers)
-    // grab foods template
-    renderReceivers(receivers)
-  });
-}
-
-function renderReceivers(receivers) {
-    console.log(receivers)
-  console.log($("#receiver-template"))
-  mytemplate = _.template($("#receiver-template").html());
-
-  console.log(mytemplate)
-  // input foods into template and append to parent
-  eachReceiver = receivers.map(function(receiver) {
-    return mytemplate(receiver);
-  });
-  // clear content (for repeated use)
-  // $("#name").html("");
-  // append foods to ul
-  $("#name").append(eachReceiver);
-}
 
 
      $(document).ready(function() {
@@ -185,9 +163,7 @@ function renderReceivers(receivers) {
         });
     }
 
-// $('#myModal').on('shown.bs.modal', function () {
-//   $('#myInput').focus()
-// })
+
 
 })
 
