@@ -7,7 +7,7 @@ bcrypt = require('bcrypt');
 var donorSchema = new Schema({
 
  email: {type: String}, 
- password: {type: String},
+ passwordDigest: {type: String},
  firstName: {type: String},
  lastName: {type: String},
  city: {type: String},
@@ -20,7 +20,7 @@ var donorSchema = new Schema({
 var receiverSchema = new Schema({
 
  userName: {type: String},
- password: {type: String},
+ passwordDigest: {type: String},
  firstName: {type: String},
  lastName: {type: String},
  email: {type: String},
@@ -45,7 +45,7 @@ receiverSchema.statics.createSecure = function (userName, password, firstName, l
       // build the user object
       var user = {
          userName: userName,
-    		 password: hash,
+    		 passwordDigest: hash,
     		 firstName: firstName,
     		 lastName: lastName,
     		 email: email,
@@ -65,6 +65,7 @@ receiverSchema.statics.createSecure = function (userName, password, firstName, l
 // authenticate reciever (for login)
 receiverSchema.statics.authenticate = function (userName, password, cb) {
   // find user by email entered at log in
+
   this.findOne({userName: userName}, function (err, user) {
     // throw error if can't find user
     if (user === null) {
@@ -104,7 +105,7 @@ donorSchema.statics.createSecure = function (email, password, firstName, lastNam
       // build the user object
       var user = {
     		 email: email,         
-    		 password: hash,
+    		 passwordDigest: hash,
     		 firstName: firstName,
     		 lastName: lastName,
     		 city: city,

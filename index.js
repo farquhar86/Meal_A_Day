@@ -37,8 +37,13 @@ app.use(function (req, res, next) {
   // login a user
   req.login = function (user) {
     req.session.userId = user._id;
+    user = req.user;
+    return user
+
   };
   // find the current user
+  var currentUser= req.user
+  console.log(currentUser)
   req.currentUser = function (cb) {
     if(req.body.sex){
       db.Receiver.
@@ -56,6 +61,14 @@ app.use(function (req, res, next) {
       })
     }
   };
+  req.currentReceiver = function(cb) {
+    db.Receiver.
+      findOne({ _id: req.session.userId },
+      function (err, user) {
+        req.user = user;
+        cb(null, user);
+    });
+  }
   // logout the current user
   req.logout = function () {
     req.session.userId = null;
@@ -113,7 +126,7 @@ app.post(["/users", "/receiver_signup"], function signup(req, res) {
   var receiver = req.body.receiver;
   console.log(receiver)
   // pull out their email & password
-  var userName = receiver.userName
+  var userName = receiver.userName;
   var password = receiver.password;
   var firstName = receiver.firstName;
   var lastName = receiver.lastName;
@@ -127,17 +140,17 @@ app.post(["/users", "/receiver_signup"], function signup(req, res) {
   db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, user) {
     if(err) {return console.log(err);}
     //res.send(email + " is registered!\n");
-    //req.login(receiver)
+    req.login(receiver)
     res.redirect('/receiver_profile')
   });
 
 });
 
 app.get("/receiver_profile", function (req, res) {
-  req.currentUser(function (err, user) {
-    console.log(user);
+  req.currentReceiver(function (err, user) {
+    console.log("im user", user);
     // if(!user){
-    //   // res.send(user)
+    // res.send(user)
     //   res.redirect('/')
     // }
     res.sendFile(path.join(views, "receiver_profile.html"));
@@ -203,6 +216,7 @@ app.post(["/sessions", "/donor_login"], function login(req, res) {
   var user = req.body.donor;
   var email = user.email;
   var password = user.password;
+    console.log("User:", user, "Email:", email, "Password:", password)
   db.Donor.authenticate(email, password, function (err, user) {
     if (err) {
       console.log(err)
@@ -228,6 +242,50 @@ app.get("/receivers", function(req, res){
 
 })
 
+// this is getting current receivers out of the database
+app.get("/getCurrentReceiver", function userShow(req, res) {
+  console.log("got request for current users info")
+  req.currentReceiver(function (err, user) {
+    console.log("receiver is", user);
+    if (user === null) {
+      res.redirect("/signup")
+      console.log("I cant find the user info")
+    } else {
+      res.send(user)
+      console.log("I got the user")
+     
+    }
+  })
+});
+
+// app.get("/getCurrentReceiver", function(req, res){
+//   req.currentUser()
+//   console.log("hello")
+//   console.log(db.Receiver.findOne({ _id: req.session.userId }))
+//   var user = db.Receiver.findOne({ _id: req.session.userId });
+  
+
+  // req.currentUser(function(err, user){
+  //   res.send(JSON.stringify(user))
+    
+  // }) 
+
+  // console.log("current user is - " + user._id);
+
+
+  
+
+// db.Receiver.findOne({ _id: req.session.userId }, function(err, receiver) {
+//     if (err) {
+//         console.log("BAD THING!");
+//         return res.sendStatus(400);
+//     }
+//     console.log(receiver)
+     // res.send(user);
+// })
+
+// })
+
 app.get(["/logout", "/sessions"], function (req, res){
   req.logout()
   res.sendFile(path.join(views, "/"));
@@ -236,57 +294,30 @@ app.get(["/logout", "/sessions"], function (req, res){
 
 // Trying to get photo uploads to work
 
-var done = false;
-app.use(multer( {dest:'./uploads/',
-                 rename:function(fieldname,filename){
-                    console.log('Field Name value ',fieldname);
-                    console.log('Field Name value ',filename);
-                    return filename;
-                 }, 
-                onFileUploadStart : function(file){
-                    console.log('File recieved:');
-                    console.log(file);
-                },
-                 onFileUploadData:function (file,data){
-                    console.log('Data recieved');
-                },
-              }).single('photo'));
-
-app.use(express.static(__dirname+"/views"));
-
-app.post('/upload',require(__dirname+'/upload.js').upload);
-
-
-
-
-// /*Configure the multer.*/
 // var done = false;
+// app.use(multer( {dest:'./uploads/',
+//                  rename:function(fieldname,filename){
+//                     console.log('Field Name value ',fieldname);
+//                     console.log('Field Name value ',filename);
+//                     return filename;
+//                  }, 
+//                 onFileUploadStart : function(file){
+//                     console.log('File recieved:');
+//                     console.log(file);
+//                 },
+//                  onFileUploadData:function (file,data){
+//                     console.log('Data recieved');
+//                 },
+//               }).single('photo'));
 
-// app.use(multer({ dest: './uploads/',
-//  rename: function (fieldname, filename) {
-//     return filename+Date.now();
-//   },
-// onFileUploadStart: function (file) {
-//   console.log(file.originalname + ' is starting ...')
-// },
-// onFileUploadComplete: function (file) {
-//   console.log(file.fieldname + ' uploaded to  ' + file.path)
-//   done=true;
-// }
-// }).single('photo'));
+// app.use(express.static(__dirname+"/views"));
 
-// /*Handling routes.*/
+// app.post('/upload',require(__dirname+'/upload.js').upload);
 
-// app.get('/',function(req,res){
-//       res.sendfile("index.html");
-// });
 
-// app.post('/api/photo',function(req,res){
-//   if(done==true){
-//     console.log(req.files);
-//     res.end("File uploaded.");
-//   }
-// });
+
+
+
 
 
 

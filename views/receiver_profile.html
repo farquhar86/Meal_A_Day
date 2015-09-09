@@ -79,33 +79,10 @@
     	<input type="submit" value="Upload selected file to server">
 	</form>  -->
 
-<div id="test"></div>
- <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Bradley Farqhar <small>San Fran</small></h2>
-                    <h4> Meals Available: 3</h4> 
-                    <h4> Meals Received: 15</h4>
-                    <p class="lead">I've had a great life and still have a lot of living to do.</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="static/images/homelessman1.jpg" alt="">
-                </div>
-            </div>
+<div id="receiver"></div>
+<button class="editReceiverProfile">Edit Profile</button>
 
-        </div>
-        <hr>
-
-        <!--  <div class="col-xs-12 divider text-center">
-               
-                    <h2><strong>245</strong></h2>                    
-                    <p><small>Meals Received</small></p>
-                 
-                    </div> -->
-
-   <script type="text/template" id="receiver-template">  
+   <script type="text/template" id="current-receiver-template">  
    
 	<div class="content-section-b">
 
@@ -114,8 +91,10 @@
                 <div class="col-lg-5 col-sm-6">
                     
                     <div class="clearfix"></div>
-                    <h2 class="section-heading"><%= receiver.firstName %> <%= receiver.lastName %> <small><%= receiver.currentCity %></small></h2>
-                    <p class="lead"><%= receiver.story %></p>
+                    <h2 class="section-heading"><%= firstName %> <%= lastName %> <small><%= currentCity %></small></h2>
+                    <h4> Meals Available: 3</h4> 
+                    <h4> Meals Received: 15</h4>
+                    <p class="lead"><%= story %></p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="static/images/homelessman1.jpg" alt="">
