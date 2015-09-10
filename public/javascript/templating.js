@@ -37,14 +37,15 @@ function getCurrentReceiver() {
   // console.log("This is the current user", res)
     
     // grab user template
-    sendCurrentReceiver(res)
     renderCurrentReceiver(res)
+    sendCurrentReceiver(res)
   });
 }
 
 function renderCurrentReceiver(receiver) {
   template = _.template($("#current-receiver-template").html());
   // input user into template and append to parent
+  console.log("I am in renderCurrentReceiver")
   eachReceiver = template(receiver);
     // console.log(template(eachReceiver))
   
@@ -71,7 +72,7 @@ function sendCurrentReceiver(receiver) {
 //this is to get only the one DONOR
 function getCurrentDonor() {
   $.get("/getCurrentDonor", function(res){
-  console.log(res)
+ 
     
     // grab user template
     renderCurrentDonor(res)
