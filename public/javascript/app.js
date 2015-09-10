@@ -9,6 +9,10 @@ $(document).ready(function() {
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').focus()
 })
+
+    $("#alertButton").click(function (){
+        $("#el-alert").addClass("in");
+    })
 });
 
 

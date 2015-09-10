@@ -10,6 +10,7 @@
     <link href="/static/css/main.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
+    <link href="/static/javascript/bootstrap.js">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
@@ -43,7 +44,12 @@
                     <li>
                         <form method="GET" action="/logout">
                             <button class="btn btn-default">Logout</button>
-                        </form>    
+                        </form>
+                    </li>
+                    <li>        
+                        <form method="" action="">
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal">Edit Info</button>   
+                        </form>  
                     </li>
                     
                 </ul>
@@ -52,6 +58,26 @@
         </div>
         <!-- /.container -->
     </nav>
+    <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Update or Change Profile</h4>
+              </div>
+              <div class="modal-body">
+
+
+                <div id="el-alert" class="alert alert-success alert-block fade"> Well done! Your profile is updated!</div>
+
+
+
+                <div id="donor"></div>
+
+              </div>  
+      </div>
+  </div>
+</div>
         <div class="receiver-intro-header">
         <div class="container">
             <div class="row">
@@ -133,6 +159,45 @@
         </div>       
     </div> 
     <br>            
+  </script>
+
+    <script type="text/template" id="edit-donor-template">  
+      <div class="content-section-b">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <div class="clearfix"></div>
+                        <form method="post" action="/updateDonorProfile">
+                          <div class="form-group col-lg-12">
+                            <label>Email</label>
+                            <input type="email" name="email" value="<%= email %>" class="form-control">
+                          </div> 
+                          <div class="form-group col-lg-12">
+                            <label>Change Password</label>
+                            <input type="password" name="password" placeholder="Password" class="form-control">
+                          </div> 
+                          <div class="form-group col-lg-12">
+                            <label>First Name</label>
+                            <input type="text" name="firstName" value="<%=firstName%>" class="form-control">
+                          </div> 
+                          <div class="form-group col-lg-12">
+                            <label>Last Name</label>
+                            <input type="text" name="lastName" value="<%=lastName%>" class="form-control">
+                          </div> 
+                          <div class="form-group col-lg-12">
+                            <label>Current City</label>
+                            <input type="text" name="city" value="<%=city%>" class="form-control">
+                          </div> 
+
+                          <div class="form-group col-lg-12">
+                            <button id="alertButton" class="btn btn-success">Update Profile</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"> and then Close</button>
+                          </div>  
+                        </form>
+            </div>
+        </div>       
+    </div> 
+                
   </script>
 </body>
 

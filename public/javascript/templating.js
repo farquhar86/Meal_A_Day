@@ -1,7 +1,11 @@
 $(document).ready(function() {
-  // getReceivers()
+   getReceivers()
   getCurrentReceiver()
+   getCurrentDonor()
 })
+
+
+//******************************************************************************
 // This is to get all users
 function getReceivers() {
   $.get("/receivers", function(res){
@@ -26,10 +30,11 @@ function renderReceivers(receivers) {
 }
 
 
-//this is to get only the one users
+//******************************************************************************
+//this is to get only the one receiver
 function getCurrentReceiver() {
   $.get("/getCurrentReceiver", function(res){
-  console.log(res)
+  console.log("This is the current user", res)
     
     // grab user template
     renderCurrentReceiver(res)
@@ -47,6 +52,31 @@ function renderCurrentReceiver(receiver) {
   // append user to ul
   $("#receiver").append(eachReceiver);
 }
+
+//******************************************************************************
+//this is to get only the one DONOR
+function getCurrentDonor() {
+  $.get("/getCurrentDonor", function(res){
+  console.log(res)
+    
+    // grab user template
+    renderCurrentDonor(res)
+  });
+}
+
+function renderCurrentDonor(donor) {
+  template = _.template($("#edit-donor-template").html());
+  console.log("hello")
+  // input user into template and append to parent
+  eachDonor = template(donor);
+    // console.log(template(eachReceiver))
+  
+  // clear content (for repeated use)
+  // $("#name").html("");
+  // append user to ul
+  $("#donor").append(eachDonor);
+}
+//******************************************************************************
 
 
 

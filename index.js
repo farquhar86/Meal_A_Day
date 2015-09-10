@@ -42,17 +42,8 @@ app.use(function (req, res, next) {
 
   };
   // find the current user
-  var currentUser= req.user
-  console.log(currentUser)
+  
   req.currentUser = function (cb) {
-    if(req.body.sex){
-      db.Receiver.
-        findOne({ _id: req.session.userId },
-        function (err, user) {
-          req.user = user;
-          cb(null, user);
-        })
-    } else {
       db.Donor.
       findOne({ _id: req.session.userId },
       function (err, user) {
@@ -60,7 +51,7 @@ app.use(function (req, res, next) {
         cb(null, user);
       })
     }
-  };
+  
   req.currentReceiver = function(cb) {
     db.Receiver.
       findOne({ _id: req.session.userId },
@@ -78,31 +69,7 @@ app.use(function (req, res, next) {
   next(); 
 });
 
-// extending the `req` object to help manage Donor sessions
-// app.use(function (req, res, next) {
-//   // login a user
-//   req.login = function (user) {
-//     req.session.userId = user._id;
-//   };
-//   // find the current user
-//   req.currentUser = function (cb) {
-//     db.Donor.
-//       findOne({ _id: req.session.userId },
-//       function (err, user) {
-//         req.user = user;
-//         cb(null, user);
-//       })
-//   };
-//   // logout the current user
-//   req.logout = function () {
-//     req.session.userId = null;
-//     req.user = null;
-//   }
-//   // call the next middleware in the stack
-//   next(); 
-// });
 
-// views path
 var views = path.join(process.cwd(), "views");
 
 
@@ -258,6 +225,61 @@ app.get("/getCurrentReceiver", function userShow(req, res) {
   })
 });
 
+// this is getting current receivers out of the database
+app.get("/getCurrentDonor", function donorShow(req, res) {
+  
+  req.currentUser(function (err, user) {
+    console.log("receiver is", user);
+    if (user === null) {
+      res.redirect("/signup")
+      
+    } else {
+      res.send(user)
+      
+     
+    }
+  })
+});
+
+// Updating the Donors Profile
+app.post("/updateDonorProfile", function(req, res){
+ 
+  req.currentUser(function(err, user){
+    email = req.body.email;
+    password = req.body.password;
+    firstName = req.body.firstName;
+    lastName = req.body.lastName;
+    city = req.body.city;
+    
+    console.log("this is the passed through user", firstName, lastName, city)
+
+ db.Donor.update({_id: user._id}, { $set: { email: email, password: password, firstName: firstName, lastName: lastName, city: city}}, function(err, user){
+  console.log("this is the new user", user)
+
+  // req.login(user);
+  // res.redirect("/donor_profile");
+  
+  })
+    // db.Donor.update({_id: user._id}, { $set: { firstName: user.firstName }}, {upsert:true}, function(err, updated){
+    //   if(err){
+    //     console.log(err);
+    //   }else{
+    //     console.log(updated);
+    //     res.sendStatus(200);
+    //     db.Donor.save(function (err) {
+    //  if (!err) console.log('Success!');
+    // });
+    //   }
+    // });
+
+  })
+});
+
+
+
+
+
+
 // app.get("/getCurrentReceiver", function(req, res){
 //   req.currentUser()
 //   console.log("hello")
@@ -265,10 +287,10 @@ app.get("/getCurrentReceiver", function userShow(req, res) {
 //   var user = db.Receiver.findOne({ _id: req.session.userId });
   
 
-  // req.currentUser(function(err, user){
-  //   res.send(JSON.stringify(user))
+//   req.currentUser(function(err, user){
+//     res.send(JSON.stringify(user))
     
-  // }) 
+//   }) 
 
   // console.log("current user is - " + user._id);
 
