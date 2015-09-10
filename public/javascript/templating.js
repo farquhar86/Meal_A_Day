@@ -39,6 +39,7 @@ function getCurrentReceiver() {
     // grab user template
     renderCurrentReceiver(res)
     sendCurrentReceiver(res)
+    addingReceiverName(res)
   });
 }
 
@@ -67,6 +68,19 @@ function sendCurrentReceiver(receiver) {
   // append user to ul
   $("#editReceiver").append(eachRec);
 }
+//this info will be sent into the edit page
+function addingReceiverName(receiver) {
+  template = _.template($("#adding-name-template").html());
+  console.log("hello")
+  // input user into template and append to parent
+  name = template(receiver);
+    // console.log(template(eachReceiver))
+  
+  // clear content (for repeated use)
+  // $("#name").html("");
+  // append user to ul
+  $("#welcomeName").append(name);
+}
 
 //******************************************************************************
 //this is to get only the one DONOR
@@ -76,6 +90,7 @@ function getCurrentDonor() {
     
     // grab user template
     renderCurrentDonor(res)
+    renderDonorName(res)
   });
 }
 
@@ -90,6 +105,19 @@ function renderCurrentDonor(donor) {
   // $("#name").html("");
   // append user to ul
   $("#donor").append(eachDonor);
+}
+
+function renderDonorName(donor) {
+  template = _.template($("#name-of-donor-template").html());
+  console.log("hello")
+  // input user into template and append to parent
+  donorName = template(donor);
+    // console.log(template(eachReceiver))
+  
+  // clear content (for repeated use)
+  // $("#name").html("");
+  // append user to ul
+  $("#donorName").append(donorName);
 }
 //******************************************************************************
 

@@ -66,12 +66,6 @@
                 <h4 class="modal-title">Update or Change Profile</h4>
               </div>
               <div class="modal-body">
-
-
-                <div id="el-alert" class="alert alert-success alert-block fade"> Well done! Your profile is updated!</div>
-
-
-
                 <div id="donor"></div>
 
               </div>  
@@ -82,14 +76,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="intro-message">
+                    <div id="donorName"></div>
+                    <!-- <div class="intro-message">
                         <h1>Give A Meal</h1>
-                        <h3>For every $10 donated a you are giving a meal to a neighbor.</h3>
+                        <h3>For every $10 donated, you are giving a meal to a neighbor.</h3>
                         <hr class="intro-divider">
-                        <h3> Please view local people below</h3>
+                        <h3> Please view your neighors in need below./h3>
                         <br>
                         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -197,6 +192,17 @@
         </div>       
     </div> 
                 
+  </script>
+     <script type="text/template" id="name-of-donor-template">  
+                    <div class="intro-message">
+                        <h1>Welcome <%= firstName%></h1>
+                        <h3>For every $10 donated, you are giving a meal to a neighbor.</h3>
+                        <hr class="intro-divider">
+                        <h3> Please view your neighors in need below.>
+                        <br>
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>
+
   </script>
 </body>
 

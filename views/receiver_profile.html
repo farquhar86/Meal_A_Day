@@ -75,14 +75,9 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="intro-message">
-                        <h1>Receive A Meal</h1>
-                        <h3>People in your neighborhood can now view your profile to donate meals.</h3>
-                        <hr class="intro-divider">
-                        <h3> Please view your profile below</h3>
-                        <br>
-                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                    </div>
+                    
+                        <div id="welcomeName"></div>
+                        
                 </div>
             </div>
 
@@ -112,6 +107,7 @@
  <h1>Your Closest Partnered Restaurant</h1>
  <br>
  <h3>To collect your meal say you're with "Give a Meal" along with your name. They will be expecting you!</h3>
+ <h4>SubWay at 1250 Market Street, San Francisco</h4>
  <br>
  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 </div>
@@ -123,10 +119,14 @@
        <div class="col-md-6">
       <img class="img-responsive" src="static/images/subway.jpg" alt="">
     </div>
-    <br>
+    
     <div class="col-md-6">
+
+
+
+
     <section id="contact" class="map">
-        <iframe width="100%" height="10%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1250,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=Subway&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Subway,+1250,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=1250,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=Subway&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Subway,+1250,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=16&amp;iwloc=A&amp;output=embed"></iframe>
         <br />
         <small>
             <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=1250,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=Subway&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Subway,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
@@ -142,7 +142,7 @@
                 <div class="col-lg-12 text-center">
                   <br>
 
-                    <p class="copyright text-muted small">Copyright &copy; Meal a Day 2014. All Rights Reserved || Contact @ farquharbradley@gmail.com or 602 350 8256</p>
+                    <p class="copyright text-muted small">Copyright &copy; Give a Meal 2015. All Rights Reserved || Contact @ farquharbradley@gmail.com or 602 350 8256</p>
                 </div>
             </div>
         </div>
@@ -223,6 +223,16 @@
     </div> 
                 
   </script>
+     <script type="text/template" id="adding-name-template">  
+                    <div class="intro-message">            
+                        <h1>Welcome <%=firstName%></h1>
+                        <h3>People in your neighborhood can now view your profile and donate meals.</h3>
+                        <hr class="intro-divider">
+                        <h3> See your Profile below.</h3>
+                        <br>
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>  
+    </script>
 </body>	
 
 </html>

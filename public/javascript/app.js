@@ -13,6 +13,11 @@ $('#myModal').on('shown.bs.modal', function () {
     $("#alertButton").click(function (){
         $("#el-alert").addClass("in");
     })
+
+    // var map = new google.maps.Map(document.getElementById('map'), {
+    //         center: {lat: 37.78, lng: -122.44},
+    //         zoom: 2
+    // });
 });
 
 
