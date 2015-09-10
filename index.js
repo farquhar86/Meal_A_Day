@@ -36,8 +36,12 @@ app.use(
 app.use(function (req, res, next) {
   // login a user
   req.login = function (user) {
+    console.log("I am loging in a user 111122223333")
+    console.log(user);
     req.session.userId = user._id;
+    console.log("This should be equal to the session number", req.session.userId)
     user = req.user;
+    console.log("this is the user console.loged ", user)
     return user
 
   };
@@ -91,7 +95,8 @@ app.get("/login", function (req, res) {
 app.post(["/users", "/receiver_signup"], function signup(req, res) {
   // grab the user from the params
   var receiver = req.body.receiver;
-  console.log(receiver)
+  console.log("this is me signing up")
+  console.log("this is the information I entered", receiver)
   // pull out their email & password
   var userName = receiver.userName;
   var password = receiver.password;
@@ -103,19 +108,24 @@ app.post(["/users", "/receiver_signup"], function signup(req, res) {
   var birthDate = receiver.birthDate;
   var story = receiver.story;
   
+  console.log("this is my username", userName)
   // create the new Receiver
-  db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, user) {
+  db.Receiver.createSecure(userName, password, firstName, lastName, email, currentCity, sex, birthDate, story,  function (err, receiver) {
     if(err) {return console.log(err);}
     //res.send(email + " is registered!\n");
-    req.login(receiver)
+    console.log("I am now going to login the user")
+    req.login(receiver);
+    console.log(receiver);
     res.redirect('/receiver_profile')
   });
 
 });
 
 app.get("/receiver_profile", function (req, res) {
+  console.log("I got the notice to send you to your profile page 1111112222222 ")
   req.currentReceiver(function (err, user) {
-    console.log("im user", user);
+    console.log("this is where I should have the user in my hand 1111112222222")
+    console.log("And the user is:", user);
     // if(!user){
     // res.send(user)
     //   res.redirect('/')
@@ -138,7 +148,7 @@ app.post(["/users", "/donor_signup"], function signup(req, res) {
   var city = donor.city;
 
   // create the new Donor
-  db.Donor.createSecure(email, password, firstName, lastName, city,  function (err, user) {
+  db.Donor.createSecure(email, password, firstName, lastName, city,  function (err, donor) {
     if(err) {return console.log(err);}
     //res.send(email + " is registered!\n");
     req.login(donor)
@@ -211,7 +221,7 @@ app.get("/receivers", function(req, res){
 
 // this is getting current receivers out of the database
 app.get("/getCurrentReceiver", function userShow(req, res) {
-  console.log("got request for current users info")
+  console.log("got request for current users info and req =")
   req.currentReceiver(function (err, user) {
     console.log("receiver is", user);
     if (user === null) {
@@ -276,7 +286,7 @@ app.post("/updateReceiverProfile", function(req, res){
     story = req.body.story;
 
     
-    console.log("this is the passed through user", firstName, lastName)
+    // console.log("this is the passed through user", firstName, lastName)
 
  db.Receiver.update({_id: user._id}, { $set: { userName: userName, password: password, firstName: firstName, lastName: lastName, currentCity: currentCity, sex: sex, birthDate: birthDate, story: story}}, function(err, user){
   console.log("this is the new user", user)
