@@ -256,24 +256,36 @@ app.post("/updateDonorProfile", function(req, res){
  db.Donor.update({_id: user._id}, { $set: { email: email, password: password, firstName: firstName, lastName: lastName, city: city}}, function(err, user){
   console.log("this is the new user", user)
 
-  // req.login(user);
-  // res.redirect("/donor_profile");
-  
   })
-    // db.Donor.update({_id: user._id}, { $set: { firstName: user.firstName }}, {upsert:true}, function(err, updated){
-    //   if(err){
-    //     console.log(err);
-    //   }else{
-    //     console.log(updated);
-    //     res.sendStatus(200);
-    //     db.Donor.save(function (err) {
-    //  if (!err) console.log('Success!');
-    // });
-    //   }
-    // });
 
   })
 });
+
+
+// Updating the Receiver Profile
+app.post("/updateReceiverProfile", function(req, res){
+ console.log("I hear that you are calling me")
+  req.currentReceiver(function(err, user){
+    userName = req.body.userName;
+    password = req.body.password;
+    firstName = req.body.firstName;
+    lastName = req.body.lastName;
+    currentCity = req.body.currentCity;
+    sex = req.body.sex;
+    birthDate = req.body.birthDate;
+    story = req.body.story;
+
+    
+    console.log("this is the passed through user", firstName, lastName)
+
+ db.Receiver.update({_id: user._id}, { $set: { userName: userName, password: password, firstName: firstName, lastName: lastName, currentCity: currentCity, sex: sex, birthDate: birthDate, story: story}}, function(err, user){
+  console.log("this is the new user", user)
+
+  })
+
+  })
+});
+
 
 
 

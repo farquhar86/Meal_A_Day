@@ -34,9 +34,10 @@ function renderReceivers(receivers) {
 //this is to get only the one receiver
 function getCurrentReceiver() {
   $.get("/getCurrentReceiver", function(res){
-  console.log("This is the current user", res)
+  // console.log("This is the current user", res)
     
     // grab user template
+    sendCurrentReceiver(res)
     renderCurrentReceiver(res)
   });
 }
@@ -51,6 +52,19 @@ function renderCurrentReceiver(receiver) {
   // $("#name").html("");
   // append user to ul
   $("#receiver").append(eachReceiver);
+}
+//this info will be sent into the edit page
+function sendCurrentReceiver(receiver) {
+  template = _.template($("#edit-receiver-template").html());
+  console.log("hello")
+  // input user into template and append to parent
+  eachRec = template(receiver);
+    // console.log(template(eachReceiver))
+  
+  // clear content (for repeated use)
+  // $("#name").html("");
+  // append user to ul
+  $("#editReceiver").append(eachRec);
 }
 
 //******************************************************************************
@@ -77,6 +91,7 @@ function renderCurrentDonor(donor) {
   $("#donor").append(eachDonor);
 }
 //******************************************************************************
+
 
 
 

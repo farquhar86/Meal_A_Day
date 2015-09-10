@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<script src="/static/javascript/app.js"></script>
 <link href="/static/css/receiver_profile.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
@@ -8,11 +8,18 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+
     <script src="/vendor/jquery/dist/jquery.min.js"></script>
     <link href="/static/javascript/bootstrap.js">
     <link href="/static/css/landing-page.css" rel="stylesheet">
     <script src="/static/javascript/templating.js"></script>
     <script src="/vendor/underscore/underscore-min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+   
+
+
+
+    
 
 <body>
     <!-- Navigation -->
@@ -40,7 +47,7 @@
                      <li>        
                         <form method="" action="">
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal">Edit Info</button>   
-                        </form>  
+                        </form> 
                     </li>
                     
                 </ul>
@@ -49,7 +56,7 @@
         </div>
         <!-- /.container -->
     </nav>
-      <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal fade bs-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body text-center">
@@ -57,13 +64,7 @@
                 <h4 class="modal-title">Update or Change Profile</h4>
               </div>
               <div class="modal-body">
-
-
-                <div id="el-alert" class="alert alert-success alert-block fade"> Well done! Your profile is updated!</div>
-
-
-
-                <div id="receiver"></div>
+                <div id="editReceiver"></div>
 
               </div>  
       </div>
@@ -177,10 +178,10 @@
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
                     <div class="clearfix"></div>
-                        <form method="post" action="/updateDonorProfile">
+                        <form method="post" action="/updateReceiverProfile">
                           <div class="form-group col-lg-12">
                             <label>Email</label>
-                            <input type="email" name="email" value="<%= email %>" class="form-control">
+                            <input type="text" name="userName" value="<%= userName %>" class="form-control">
                           </div> 
                           <div class="form-group col-lg-12">
                             <label>Change Password</label>
@@ -196,12 +197,25 @@
                           </div> 
                           <div class="form-group col-lg-12">
                             <label>Current City</label>
-                            <input type="text" name="city" value="<%=city%>" class="form-control">
+                            <input type="text" name="currentCity" value="<%=currentCity%>" class="form-control">
                           </div> 
+                           <div class="form-group col-lg-12">
+                            <label>Sex</label>
+                            <input type="text" name="sex" value="<%=sex%>" class="form-control">
+                          </div> 
+                           <div class="form-group col-lg-12">
+                            <label>Birthday</label>
+                            <input type="date" name="birthDate" value="<%=birthDate%>" class="form-control">
+                          </div> 
+                           <div class="form-group col-lg-12">
+                            <label>Story</label>
+                            <input type="text" name="story" value="<%=story%>" class="form-control">
+                          </div> 
+                        
 
                           <div class="form-group col-lg-12">
-                            <button id="alertButton" class="btn btn-success">Update Profile</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button id="alertButton" class="btn btn-success">Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">and then Close</button>
                           </div>  
                         </form>
             </div>
