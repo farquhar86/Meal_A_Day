@@ -356,7 +356,5 @@ app.get(["/logout", "/sessions"], function (req, res){
 
 
 
-var listener = app.listen(3000, function () {
-  console.log("Listening on port " + listener.address().port);
-});
+var listener = app.listen(process.env.PORT || 3000)
 

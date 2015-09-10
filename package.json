@@ -8,7 +8,8 @@
     "keygenerator": "^1.0.4",
     "mongoose": "^4.1.5",
     "multer": "^1.0.3",
-    "node-sass-middleware": "^0.9.0"
+    "node-sass-middleware": "^0.9.0",
+    "nodemon": "^1.4.1"
   },
   "name": "meal_a_day",
   "version": "1.0.0",
@@ -28,4 +29,9 @@
   },
   "homepage": "https://github.com/farquhar86/Meal_A_Day#readme",
   "description": ""
+
+   "scripts": {
+    "start": "node index.js",
+    "postinstall": "bower install"   // <---- only need this line if you're using Bower
+   }
 }
