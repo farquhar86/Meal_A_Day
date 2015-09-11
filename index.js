@@ -297,17 +297,17 @@ app.post("/updateReceiverProfile", function(req, res){
 });
 
 
-app.delete("/deleteDonor", function destroy(req, res){
-  var id = req.params.id;
-  db.Donor.remove({_id: id}, function(err, food){
-    if (err) {
-      console.log(err);
-      return res.sendStatus(400);
-    }
-    res.sendStatus(200);
-  });
+// app.delete("/deleteDonor", function destroy(req, res){
+//   var id = req.params.id;
+//   db.Donor.remove({_id: id}, function(err, food){
+//     if (err) {
+//       console.log(err);
+//       return res.sendStatus(400);
+//     }
+//     res.sendStatus(200);
+//   });
 
-});
+// });
 
 app.get(["/logout", "/sessions"], function (req, res){
   req.logout()

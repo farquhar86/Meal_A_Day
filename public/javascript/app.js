@@ -8,17 +8,17 @@ $(document).ready(function() {
 	        $("#el-alert").addClass("in");
 	    })
 
-	function deleteDonor(context) {
-	  var cardId = $(context).data()._id;
-	  $.ajax({
-	    url: '/donor'
-	    type: 'DELETE',
-	    success: function(res) {
+	// function deleteDonor(context) {
+	//   var cardId = $(context).data()._id;
+	//   $.ajax({
+	//     url: '/donor'
+	//     type: 'DELETE',
+	//     success: function(res) {
 	      
-	      // getEveryCard();
-	    }
-	  });
-	}
+	//       // getEveryCard();
+	//     }
+	//   });
+	// }
 
 
 
