@@ -30,6 +30,7 @@ function renderReceivers(receivers) {
 }
 
 
+
 //******************************************************************************
 //this is to get only the one receiver
 function getCurrentReceiver() {

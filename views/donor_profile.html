@@ -96,7 +96,9 @@
     <div class="modal-content">
       <div class="modal-body text-center">
         <!-- this is the donation Widget -->
-        <div id='razoo_donation_widget'><span><a href="https://www.razoo.com/">Raise money online</a> for <a href="https://www.razoo.com/story/A-Meal-A-Day">Give a Meal</a></span></div><script type='text/javascript'>var r_params = {"title":"Give a Meal","short_description":"","long_description":"","color":"#8a8d86","errors":false,"donation_options":{"10":"For A Meal"},"image":"false"};var r_protocol=(("https:"==document.location.protocol)?"https://":"http://");var r_path="https://www.razoo.com/javascripts/widget_loader.js";var r_identifier='A-Meal-A-Day';document.write(unescape("%3Cscript id='razoo_widget_loader_script' src='"+r_path+"' type='text/javascript'%3E%3C/script%3E"));</script>
+        <div id='razoo_donation_widget'><span><a href="https://www.razoo.com/">Raise money online</a> for <a href="https://www.razoo.com/story/A-Meal-A-Day">Give a Meal</a></span></div>
+
+        <script type='text/javascript'>var r_params = {"title":"Give a Meal","short_description":"","long_description":"","color":"#8a8d86","errors":false,"donation_options":{"10":"For A Meal"},"image":"false"};var r_protocol=(("https:"==document.location.protocol)?"https://":"http://");var r_path="https://www.razoo.com/javascripts/widget_loader.js";var r_identifier='A-Meal-A-Day';document.write(unescape("%3Cscript id='razoo_widget_loader_script' src='"+r_path+"' type='text/javascript'%3E%3C/script%3E"));</script>
       </div>
     </div><!-- /.modal-content -->
   </div>
@@ -182,6 +184,8 @@
                             <label>Current City</label>
                             <input type="text" name="city" value="<%=city%>" class="form-control">
                           </div> 
+                          <button>hello</button>
+                          <button data-_id="<%= _id %>" onclick="deleteDonor(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                           <div class="form-group col-lg-12">
                             <button id="alertButton" class="btn btn-success">Save</button>
@@ -198,7 +202,7 @@
                         <h1>Welcome <%= firstName%></h1>
                         <h3>For every $10 donated, you are giving a meal to a neighbor.</h3>
                         <hr class="intro-divider">
-                        <h3> Please view your neighors in need below.>
+                        <h3> Please view your neighors in need below.</h3>
                         <br>
                         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                     </div>

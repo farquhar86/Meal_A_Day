@@ -297,67 +297,22 @@ app.post("/updateReceiverProfile", function(req, res){
 });
 
 
+app.delete("/deleteDonor", function destroy(req, res){
+  var id = req.params.id;
+  db.Donor.remove({_id: id}, function(err, food){
+    if (err) {
+      console.log(err);
+      return res.sendStatus(400);
+    }
+    res.sendStatus(200);
+  });
 
-
-
-
-
-// app.get("/getCurrentReceiver", function(req, res){
-//   req.currentUser()
-//   console.log("hello")
-//   console.log(db.Receiver.findOne({ _id: req.session.userId }))
-//   var user = db.Receiver.findOne({ _id: req.session.userId });
-  
-
-//   req.currentUser(function(err, user){
-//     res.send(JSON.stringify(user))
-    
-//   }) 
-
-  // console.log("current user is - " + user._id);
-
-
-  
-
-// db.Receiver.findOne({ _id: req.session.userId }, function(err, receiver) {
-//     if (err) {
-//         console.log("BAD THING!");
-//         return res.sendStatus(400);
-//     }
-//     console.log(receiver)
-     // res.send(user);
-// })
-
-// })
+});
 
 app.get(["/logout", "/sessions"], function (req, res){
   req.logout()
   res.sendFile(path.join(views, "/"));
 })
-
-
-// Trying to get photo uploads to work
-
-// var done = false;
-// app.use(multer( {dest:'./uploads/',
-//                  rename:function(fieldname,filename){
-//                     console.log('Field Name value ',fieldname);
-//                     console.log('Field Name value ',filename);
-//                     return filename;
-//                  }, 
-//                 onFileUploadStart : function(file){
-//                     console.log('File recieved:');
-//                     console.log(file);
-//                 },
-//                  onFileUploadData:function (file,data){
-//                     console.log('Data recieved');
-//                 },
-//               }).single('photo'));
-
-// app.use(express.static(__dirname+"/views"));
-
-// app.post('/upload',require(__dirname+'/upload.js').upload);
-
 
 
 
