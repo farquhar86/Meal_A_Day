@@ -1,3 +1,7 @@
+/*
+it: This file finds donors and receivers; however, a seed file should be creating them.
+*/
+
 var db = require('./models');
 
 // db.Donor.find({}, function(err, success) {

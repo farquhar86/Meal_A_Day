@@ -4,6 +4,12 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+/*
+    it: Solid use of class based css! I would avoid naming the css file by
+    the page it is styling, but rather organize file names by type of asset 
+    that is being styled.
+*/
+
 body,
 html {
     width: 100%;

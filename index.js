@@ -4,6 +4,7 @@ var express = require('express'),
     app = express();
     session = require("express-session"),
     path = require('path'),
+    // it: is the router, multer, or sassMiddleware anywhere?
     router = express.Router(),
     multer = require('multer'),
     sassMiddleware = require('node-sass-middleware');
