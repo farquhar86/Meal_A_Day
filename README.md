@@ -3,3 +3,5 @@ We constantly hear about world hunger on the news and there are hundreds of orga
 
 This is a school project and a first attempt to help someone in need. If you would like to be a part of the cause please feel free to reach out to me or you can go to www.GiveaMeal.today or www.ReceiveaMeal.today
 
+To run this on your local host please git clone, and run npm install.
+
