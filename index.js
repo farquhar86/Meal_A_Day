@@ -219,6 +219,19 @@ app.get("/receivers", function(req, res){
 
 })
 
+// this is getting all the donors out of the database
+app.get("/donors", function(req, res){
+
+    db.Donor.find({}, function(err, donor_list){
+        if (err) {
+            console.log("BAD THING!");
+            return res.sendStatus(400);
+        }
+        res.send(donor_list);
+    })
+
+})
+
 // this is getting current receivers out of the database
 app.get("/getCurrentReceiver", function userShow(req, res) {
   console.log("got request for current users info and req =")
@@ -296,6 +309,12 @@ app.post("/updateReceiverProfile", function(req, res){
   })
 });
 
+//***************************************************************
+// Admin rotues
+
+app.get("/admin", function (req, res) {
+  res.sendFile(path.join(views, "admin.html"));
+});
 
 // app.delete("/deleteDonor", function destroy(req, res){
 //   var id = req.params.id;
@@ -313,8 +332,6 @@ app.get(["/logout", "/sessions"], function (req, res){
   req.logout()
   res.sendFile(path.join(views, "/"));
 })
-
-
 
 
 

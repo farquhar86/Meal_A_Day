@@ -2,16 +2,20 @@ $(document).ready(function() {
    getReceivers()
   getCurrentReceiver()
    getCurrentDonor()
+   getDonors()
 })
 
 
 //******************************************************************************
-// This is to get all users
+// This is to get all receivers
 function getReceivers() {
   $.get("/receivers", function(res){
     var receivers = res.reverse();
     console.log(receivers)
-    // grab foods template
+    // this puts the total number of receivers to the dashboard
+    total=receivers.length
+    $("#numberReceivers").append(total)
+
     renderReceivers(receivers)
   });
 }
@@ -29,6 +33,32 @@ function renderReceivers(receivers) {
   $("#name").append(eachReceiver);
 }
 
+
+//******************************************************************************
+// This is to get all receivers
+function getDonors() {
+  $.get("/donors", function(res){
+    var donors = res.reverse();
+    console.log(donors)
+    // this puts the total number of receivers to the dashboard
+    total=donors.length
+    $("#numberDonors").append(total)
+
+  });
+}
+
+// function renderReceivers(receivers) {
+//   template = _.template($("#receiver-template").html());
+//   // input user into template and append to parent
+//   eachReceiver = receivers.map(function(receiver) {
+//     return template({receiver: receiver});
+//     console.log(template(receiver))
+//   });
+//   // clear content (for repeated use)
+//   // $("#name").html("");
+//   // append user to ul
+//   $("#name").append(eachReceiver);
+// }
 
 
 //******************************************************************************
